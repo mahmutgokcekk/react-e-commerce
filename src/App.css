@@ -1,0 +1,30 @@
+* {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.card-border{
+    border: 1px solid rgba(0, 0, 0, 0.055) !important;
+    transition: all 0.5s;
+    cursor: pointer
+}
+
+.card-border:hover{
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.151);
+}
+
+.card-title-text {
+    --max-lines: 2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--max-lines);
+}
+
+.main-container{
+    min-height: calc(100vh - 270px);
+}

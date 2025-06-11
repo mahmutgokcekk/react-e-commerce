@@ -1,0 +1,56 @@
+# node modules
+node_modules/
+
+# build output
+dist/
+build/
+
+# system files
+.DS_Store
+Thumbs.db
+
+# log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dotenv environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# firebase config cache
+.firebase/
+.firebaserc
+
+# macOS specific
+*.DS_Store
+
+# Linux specific
+*~
+
+# Windows specific
+*.log
+
+# Optional: if using Redux DevTools or browser-specific debugging tools
+reduxDevTools/
+
+# Optional: if using coverage tools like Jest
+coverage/
+
+# Optional: parcel, vite, or other bundler cache
+.cache/
+.parcel-cache/
+vite.config.js
+vite.config.ts
+
+# Optional: ESLint cache
+.eslintcache
