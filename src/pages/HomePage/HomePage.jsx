@@ -32,8 +32,6 @@ function HomePage() {
 
     return (
         <>
-            {data || !isLoading || categories || !loading ? null : <h1>Loading...</h1>}
-
             <Row className='g-1 d-none d-lg-flex '>
                 {categoryNames && categoryNames.map((categoryName, index) => (
                     <Col xs="6" md="3" key={index} className='d-flex'>
