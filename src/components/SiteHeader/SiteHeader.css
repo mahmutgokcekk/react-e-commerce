@@ -6,3 +6,7 @@
 .header-link:hover{
     opacity: 0.5;
 }
+
+.dropdown-toggle::after{
+    display: none !important
+}

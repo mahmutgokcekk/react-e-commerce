@@ -50,11 +50,14 @@ export const commerceSlice = createSlice({
         },
         addAuth: (state, action) => {
             state.auth = action.payload;
+        },
+        logOut: (state, action) =>{
+            state.auth = action.payload;
             console.log(state.auth)
         }
 
     }
 });
 
-export const { addFavorites, deleteFavorite, addBasket, deleteBasket, addAuth } = commerceSlice.actions;
+export const { addFavorites, deleteFavorite, addBasket, deleteBasket, addAuth, logOut } = commerceSlice.actions;
 export default commerceSlice.reducer;

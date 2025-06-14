@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Link } from "react-router";
 import { useGetAllCategoriesQuery } from '../../redux/services/commerce';
+import { useSelector } from 'react-redux';
 import { FaBars } from 'react-icons/fa';
 import SiteLogo from '../SiteLogo/SiteLogo';
 import { headerLinkList } from './SiteHeaderLinkList';
 import SearchBar from '../SearchBar/SearchBar';
 import { Navbar, Container, Nav, Offcanvas } from 'react-bootstrap';
 import './SiteHeader.css';
-
+import ProfileDropDown from '../ProfileDropDown/ProfileDropDown';
 
 function SiteHeader() {
-    
+    const { auth } = useSelector((state) => state.commerce);
     const { data: categories, error: err, isLoading: loading } = useGetAllCategoriesQuery();
     const [categoryNames, setCategoryNames] = useState([]);
 
@@ -41,14 +42,18 @@ function SiteHeader() {
 
                     <div className="d-flex align-items-center">
                         {
-                            headerLinkList().map((link, index) => (
-                                <Link key={index} to={"/" + link.link} className="text-decoration-none text-black position-relative text-center me-4 header-link ">
-                                    {link.icon}
+                            headerLinkList().map((link, index) => {
+                                return <Link key={index} to={"/" + link.link} className="justify-content-center text-decoration-none text-black position-relative text-center me-4 ">
+                                    <span>{link.icon}</span>
                                     <div className="badge bg-danger position-absolute top-0 start-75 translate-middle " style={{ fontSize: '0.6rem' }}>{link.isHave}</div>
-                                    <div className='d-none d-md-block' style={{ fontSize: '0.8rem' }}>{link.name}</div>
-                                </Link>
-                            ))
+                                    <div className='d-none d-md-block text-center' style={{ fontSize: '0.8rem' }}>{link.name}</div>
+                                </Link>;
+                            })
                         }
+                        <div className='justify-content-center text-center'>
+                            <ProfileDropDown auth={auth} />
+                            <div className='d-none d-md-block text-center' style={{ fontSize: '0.8rem' }}>Hesap</div>
+                        </div>
                     </div>
                 </Container>
             </Navbar>

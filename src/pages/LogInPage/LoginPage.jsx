@@ -55,7 +55,7 @@ function LoginPage() {
         }
 
         if (user) (
-            console.log(user)
+            console.log(user) 
         );
 
     };

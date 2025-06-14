@@ -5,38 +5,47 @@ import { useDispatch } from 'react-redux';
 import SiteModal from '../SiteModal/SiteModal';
 import { createPortal } from 'react-dom';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function AddBasketButton({ product }) {
     const dispatch = useDispatch();
 
+    const { auth } = useSelector((state) => state.commerce);
+
     const [added, setAdded] = useState(false);
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState({
-        title:"",
-        message:""
-    })
+        title: "",
+        message: ""
+    });
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     function addBasketToCard(id, image, title, price) {
-        const cardInfo = {
-            id: id,
-            image: image,
-            title: title,
-            price: price,
-        };
-        dispatch(addBasket(cardInfo));
-        setAdded(true);
-        handleShow()
-        setMessage({title:"Eklendi", message:"Ürün sepete eklendi"})
+        if (auth == "") {
+            setMessage({ title: "Giriş yap", message: "Ürünü sepete eklemek için giriş yapın." });
+            handleShow();
+        } else {
+            const cardInfo = {
+                id: id,
+                image: image,
+                title: title,
+                price: price,
+            };
+            dispatch(addBasket(cardInfo));
+            setAdded(true);
+            handleShow();
+            setMessage({ title: "Eklendi", message: "Ürün sepete eklendi" });
+        }
+
     }
 
     function deleteBasketItem(id) {
         dispatch(deleteBasket(id));
         setAdded(false);
-        handleShow()
-        setMessage({title:"Çıkarıldı", message:"Ürün sepetten çıkarıldı"})
+        handleShow();
+        setMessage({ title: "Çıkarıldı", message: "Ürün sepetten çıkarıldı" });
     }
     return (
         <>
@@ -45,7 +54,7 @@ function AddBasketButton({ product }) {
             }>
                 <SlBasket className='fs-5' />
             </Button>
-            {createPortal(<SiteModal show={show} handleShow={handleShow} handleClose={handleClose} message = {message} />, document.querySelector("#root"))}
+            {createPortal(<SiteModal show={show} handleShow={handleShow} handleClose={handleClose} message={message} />, document.querySelector("#root"))}
         </>
     );
 }

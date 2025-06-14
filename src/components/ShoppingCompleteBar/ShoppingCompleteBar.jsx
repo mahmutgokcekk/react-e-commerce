@@ -8,7 +8,7 @@ function ShoppingCompleteBar() {
         <>
             <div className='d-flex flex-wrap p-4 rounded-1 mt-4 align-items-center justify-content-around card-border' style={{ background: "white" }}>
                 <div >
-                    <p className='m-0 fw-bold d-flex flex-column d-md-flex flex-md-row'>Toplam Tutar: <span className='fw-normal ms-md-1'>{totalAmount.toFixed(2)} <span className='text-success fw-bold'>TL</span></span></p>
+                    <p className='m-0 fw-bold d-flex flex-column d-md-flex flex-md-row'>Toplam Tutar: <span className='fw-normal ms-md-1 text-center mb-sm-1 mb-md-0'>{totalAmount.toFixed(2)} <span className='text-success fw-bold'>TL</span></span></p>
                 </div>
                 <div>
                     <Button variant="success">Alışverişi Tamamla</Button>
